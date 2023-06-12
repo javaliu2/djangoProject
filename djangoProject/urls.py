@@ -20,8 +20,5 @@ import polls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('polls/', include('polls.urls', namespace='polls')),
     path('tfp/', include('trafficflowprediction.urls', namespace='trafficflowprediction')),
-    path('pb/', include('progressBar.urls', namespace='progressBar')),
-    path('page/', include('page.urls', namespace='page')),
 ]
