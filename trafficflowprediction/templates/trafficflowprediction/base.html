@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#  settings设置trafficflowprediction忘记在polls后加逗号，导致下面报“引用未知文件”错误  #}
+    <link href="{% static 'trafficflowprediction/libs/bootstrap.css' %}" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'trafficflowprediction/libs/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'trafficflowprediction/libs/bootstrap.min.js' %}"></script>
+    <title>{% block title_content %}主页{% endblock %}</title>
+    {% block script_content %}{% endblock %}
+</head>
+<body>
+<div class="container">
+    <div class="row" style="height: 40vw;margin-top: 30px">
+        <div class="col-md-2" style="background-color: skyblue ">
+            <nav class="nav flex-column">
+                <a class="nav-link active" aria-current="page" href="{% url 'trafficflowprediction:upload' %}">文件选择</a>
+                <a class="nav-link" href="{% url 'trafficflowprediction:show' p=1%}">数据显示</a>
+                <a class="nav-link" href="{% url 'trafficflowprediction:clean' %}">数据筛选</a>
+                <a class="nav-link" href="{% url 'trafficflowprediction:prediction' %}">预测</a>
+                <a class="nav-link" href="{% url 'trafficflowprediction:other' %}">其他</a>
+            </nav>
+        </div>
+        <div class="col-md-10" style="background-color:lightskyblue">
+            {% block data_content %}<h1 class="text-center">LSTM预测交通流展示</h1>{% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

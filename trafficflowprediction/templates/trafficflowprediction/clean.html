@@ -1,0 +1,72 @@
+{% extends 'trafficflowprediction/base.html' %}
+{% block title_content %}数据清洗{% endblock %}
+
+{% block data_content %}
+    <form class="form-control" action="{% url  'trafficflowprediction:clean' %} " method="post">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>选项</th>
+                <th>取值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><label>车长</label></td>
+                <td><input type="checkbox" checked disabled></td>
+            </tr>
+            <tr>
+                <td><label>车速</label></td>
+                <td><input type="checkbox" checked disabled></td></td>
+            </tr>
+            <tr>
+                <td><label>轴数</label></td>
+                <td><select name="axles">
+                    <option value="考虑">考虑</option>
+                    <option selected value="不考虑">不考虑</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>车型</label></td>
+                <td><select name="car_type">
+                    <option selected value="none">不考虑</option>
+                    <option value="小客车">小客车</option>
+                    <option value="小货车">小货车</option>
+                    <option value="中货车">中货车</option>
+                    <option value="大货车">大货车</option>
+                    <option value="大客车">大客车</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>超速</label></td>
+                <td><select name="overspeed">
+                    <option selected value="none">不考虑</option>
+                    <option value="正常">正常</option>
+                    <option value="超速">超速</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>超重</label></td>
+                <td><select name="overload">
+                    <option selected value="none">不考虑</option>
+                    <option value="正常">正常</option>
+                    <option value="超重">超重</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>状态</label></td>
+                <td><select name="state">
+                    <option selected value="none">不考虑</option>
+                    <option value="正常">正常</option>
+                    <option value="线圈出错">线圈出错</option>
+                    <option value="车辆跨道行驶">车辆跨道行驶</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><button class="btn btn-primary" type="submit">清洗</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+{% endblock %}

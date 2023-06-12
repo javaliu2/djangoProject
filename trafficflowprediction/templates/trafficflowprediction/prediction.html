@@ -1,0 +1,37 @@
+{% extends 'trafficflowprediction/base.html' %}
+{% block title_content %}预测{% endblock %}
+
+{% block data_content %}
+    <form class="form-control" method="post" action="{% url 'trafficflowprediction:prediction' %}">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>选项</th>
+                <th>取值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><label>方向</label></td>
+                <td><select name="direction">
+                    <option value="down">下行</option>
+                    <option selected value="up">上行</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>间隔</label></td>
+                <td><select name="internal">
+                    <option selected value="5">5分钟</option>
+                    <option value="10">10分钟</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-primary" type="submit">预测</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+{% endblock %}

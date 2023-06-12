@@ -1,0 +1,43 @@
+{% extends 'trafficflowprediction/base.html' %}
+{% block title_content %}数据详情{% endblock %}
+
+{# 数据item详情 #}
+{# 修改，删除 #}
+
+{% block data_content %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">数据库主键为{{ object.pk }}的信息</h5>
+            <p class="card-text">
+                车道名称：<span class="badge badge-secondary bg-info">{{ object.lane_name }}</span>
+            </p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">车道编码：{{ object.lane_code }}</li>
+            <li class="list-group-item">时间：{{ object.time }}</li>
+            <li class="list-group-item">车型：{{ object.car_type }}</li>
+            <li class="list-group-item">车速：{{ object.speed }}</li>
+            <li class="list-group-item">车长：{{ object.car_length }}</li>
+            <li class="list-group-item">轴数：{{ object.axles }}</li>
+            <li class="list-group-item">总重：{{ object.total_weight }}</li>
+            <li class="list-group-item">超重：{{ object.overload }}</li>
+            <li class="list-group-item">超速：{{ object.overspeed }}</li>
+            <li class="list-group-item">状态：{{ object.state }}</li>
+            <li class="list-group-item">轴重1：{{ object.axle1_weight }}</li>
+            <li class="list-group-item">轴重2：{{ object.axle2_weight }}</li>
+            <li class="list-group-item">轴重3：{{ object.axle3_weight }}</li>
+            <li class="list-group-item">轴重4：{{ object.axle4_weight }}</li>
+            <li class="list-group-item">轴重5：{{ object.axle5_weight }}</li>
+            <li class="list-group-item">轴重6：{{ object.axle6_weight }}</li>
+            <li class="list-group-item">轴重7：{{ object.axle7_weight }}</li>
+            <li class="list-group-item">轴重8：{{ object.axle8_weight }}</li>
+            <li class="list-group-item">轴重9：{{ object.axle9_weight }}</li>
+            <li class="list-group-item">轴重10：{{ object.axle10_weight }}</li>
+        </ul>
+        <div class="card-body">
+            <a href="{% url 'trafficflowprediction:update' object.pk %}" class="card-link">编辑</a>
+            <a href="{% url 'trafficflowprediction:delete' object.pk %}" class="card-link">删除</a>
+            <a class="float-end" href="{% url 'trafficflowprediction:show' p=1 %}">返回</a>
+        </div>
+    </div>
+{% endblock %}

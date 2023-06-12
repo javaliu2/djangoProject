@@ -1,0 +1,20 @@
+{% extends 'trafficflowprediction/base.html' %}
+{% block title_content %}提示{% endblock %}
+
+{% block script_content%}
+    <script type="text/javascript">
+        $(function () {
+                alert('数据清洗完成，' + {{result|safe}} + "条数据被清除")
+
+                const url = 'http://127.0.0.1:8000/tfp/show/1/'
+                window.location.href = url
+                {# 这个是请求，后端返回页面，不是页面跳转 #}
+                {#$.get(url, function (date, status) {#}
+                    {#console.log(date)#}
+                {#    console.log(status)#}
+            }
+        )
+    </script>
+{% endblock %}
+{% block data_content %}
+{% endblock %}

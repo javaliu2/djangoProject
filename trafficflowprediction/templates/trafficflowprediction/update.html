@@ -1,0 +1,18 @@
+{% extends 'trafficflowprediction/base.html' %}
+{% block title_content %}更新数据{% endblock %}
+{% load mytag %}
+
+{% block data_content %}
+    <form action="{% url 'trafficflowprediction:update' object.pk %}" method="post">
+    {% csrf_token %}
+    {% for item in form %}
+      <div class="col-md-6 mb-3">
+        {{ item|label_class:'form-label' }}
+        {{ item }}
+        {{ item.errors }}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">保存</button>
+    <a class="btn btn-danger" href="{% url 'trafficflowprediction:detail' object.pk %}">返回</a>
+  </form>
+{% endblock %}

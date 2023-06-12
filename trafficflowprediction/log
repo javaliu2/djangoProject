@@ -1,0 +1,28 @@
+
+1、前端进度条显示有问题，前端每次GET请求得到的current总是0，之前DEBUG，
+以为是数据传输有问题，各种找。今天发现不是的，数据源就有问题，小问题。
+Upload.current = int(index2 / total) * 100  # error
+结果总是0，因为index2 / total计算结果为小数，0.XXX，取整总是为0，
+啊，这小问题，果真基础不牢，地动山摇
+Upload.current = int(index2 / total * 100)  # correct
+
+2、django url tag的使用
+HTML页面{% url 'polls:index' param1="" param2="" %}
+对应的后端接收请求方法标签 def method(request, param1, param2)
+
+3、ajax和JSON
+3.1 ajax
+创建交互式Web应用程序而无需牺牲浏览器兼容性的流行方法(Asynchronous JavaScript and XML)
+3.2 JSON
+基于JavaScript语言的轻量级的数据交换格式(JavaScript Object Notation)，轻量级指的是跟XML做比较。
+
+4、dataframe.to_csv("./data/" + minutes + '_' + direction + ".csv", index=False)
+Cannot save file into a non-existent directory: 'data'
+原因在于文件斜杠用得不对
+正确写法：
+df = pd.read_csv("C:\\Users\\User\\Downloads\\weather.csv")
+or
+df = pd.read_csv(r"C:\Users\User\Downloads\weather.csv")
+
+5、pandas.dataframe.to_csv()一直报错No such file or directory: 'data/5_up'
+因为Django是manage.py开始运行的，所以相对路径，相对manager.py来写就会读取到。

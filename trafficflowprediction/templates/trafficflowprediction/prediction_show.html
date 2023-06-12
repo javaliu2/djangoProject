@@ -1,0 +1,35 @@
+{% extends 'trafficflowprediction/base.html' %}
+{% load static %}
+{% block title_content %}预测结果{% endblock %}
+{% block data_content %}
+
+    <table class="table">
+        <thead>
+        <tr>
+        <th class="text-center">真实值与预测值对比图</th>
+        <th>衡量指标</th>
+        <th>指标值</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td rowspan="4" class="text-center">
+                <img class="img-responsive center-block img-circle" src="{% static img %}">
+            </td>
+        </tr>
+        <tr>
+            <td>RMSE</td>
+            <td>{{ loss.rmse }}</td>
+        </tr>
+        <tr>
+            <td>MAPE(%)</td>
+            <td>{{ loss.mape }}</td>
+        </tr>
+        <tr>
+            <td>MAE</td>
+            <td>{{ loss.mae }} </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
