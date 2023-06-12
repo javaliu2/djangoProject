@@ -41,10 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 用户自定义apps
-    'polls.apps.PollsConfig',  # made,忘记逗号了
     'trafficflowprediction.apps.TrafficflowpredictionConfig',
-    'progressBar.apps.ProgressbarConfig',
-    'page.apps.PageConfig',
+   
 ]
 
 MIDDLEWARE = [
